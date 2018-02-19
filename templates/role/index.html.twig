@@ -1,0 +1,39 @@
+{% extends "superadmin/base.html.twig" %}
+
+{% block title %}SendEasy - {{ 'admin.superadmin_panel'|trans }}{% endblock %}
+
+{% block ariane_content %}
+  {{ parent() }}
+  <li class="breadcrumb-item active" aria-current="page">{{ 'roles'|trans }}</li>
+{% endblock %}
+
+{% block body %}
+  <a href="{{ path('add_role') }}">
+    <button type="button" class="btn btn-success float-right mr-3">
+      {{ 'roles.add'|trans }}
+    </button>
+  </a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>{{ 'name'|trans }}</th>
+        <th>{{ 'actions'|trans }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for role in roles %}
+        <tr>
+          <td>{{ role.id }}</td>
+          <td>{{ role.name }}</td>
+          <td>
+            <a href="{{ path('edit_role', {'role': role.id})}}" class="btn btn-sm btn-warning"><i class="fa fa-pencil-alt"></i></a>
+            <!-- <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></a> -->
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

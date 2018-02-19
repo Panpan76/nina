@@ -1,0 +1,26 @@
+{% extends "superadmin/base.html.twig" %}
+
+{% block title %}SendEasy - {{ 'admin.superadmin_panel'|trans }}{% endblock %}
+
+{% block ariane_content %}
+  {{ parent() }}
+  <li class="breadcrumb-item"><a href="{{ path('user') }}">{{ 'users'|trans }}</a></li>
+  <li class="breadcrumb-item">{{ user.username }}</li>
+  <li class="breadcrumb-item active" aria-current="page">{{ 'users.add.services_marketlines'|trans }}</li>
+{% endblock %}
+
+{% block body %}
+  <form action="{{ path('set_user_services_marketlines', {'user': user.id}) }}" method="POST">
+    <fieldset class="col-md-8 offset-md-2">
+      <legend>{{ 'users.add.services_marketlines'|trans }}</legend>
+      <div class="form-group">
+        <label for="marketlines">{{ 'marketlines'|trans }}</label>
+        {{ form_widget(form.marketlines) }}
+      </div>
+      {{ form_widget(form._token) }}
+      <button type="submit" class="btn btn-primary">
+        <i class="fa fa-plus" aria-hidden="true"></i> {{ 'affect'|trans }}
+      </button>
+    </fieldset>
+  </form>
+{% endblock %}

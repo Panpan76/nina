@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block nav %}
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="">Produits</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block ariane_content %}
+    <li class="breadcrumb-item">
+        <a href="{{ path('admin') }}">Panneau d'administration</a>
+    </li>
+{% endblock %}

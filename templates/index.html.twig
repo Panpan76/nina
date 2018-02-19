@@ -1,0 +1,100 @@
+{% extends "base.html.twig" %}
+
+{% block ariane_content %}
+    <li class="breadcrumb-item" aria-current="page">
+        Qui sommes-nous ?
+    </li>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-block">
+                    <img class="card-img-top" src="{{ asset('images/logo.png') }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Horaires</h5>
+                        <p class="card-text">
+                            <table class="table table-hover table-sm">
+                                <tr>
+                                    <td>Lundi</td>
+                                    <td>Fermé</td>
+                                </tr>
+                                <tr>
+                                    <td>Mardi</td>
+                                    <td>09h -19h30</td>
+                                </tr>
+                                <tr>
+                                    <td>Mercredi</td>
+                                    <td>09h - 19h30</td>
+                                </tr>
+                                <tr>
+                                    <td>Jeudi</td>
+                                    <td>09h -19h30</td>
+                                </tr>
+                                <tr>
+                                    <td>Vendredi</td>
+                                    <td>09h - 19h30</td>
+                                </tr>
+                                <tr>
+                                    <td>Samedi</td>
+                                    <td>09h - 19h30</td>
+                                </tr>
+                                <tr>
+                                    <td>Dimanche</td>
+                                    <td>09h - 13h</td>
+                                </tr>
+                            </table>
+                            <br/>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-block">
+                    <div class="card-body">
+                        <div>
+                            <div id="map" style="height: 500px;"></div>
+                        </div>
+                        <h5 class="card-title">Contact</h5>
+                        <p class="card-text">
+                            <i class="fa fa-phone"></i>
+                            : 02 35 60 68 05<br/>
+                            <i class="fa fa-phone"></i>
+                            : 09 63 55 68 05<br/>
+                            <i class="fa fa-phone"></i>
+                            : 06 83 37 44 49<br/>
+                            <i class="fa fa-map-marker"></i>
+                            : Place du Marché, 76230 Isneauville<br/>
+                            <i class="fa fa-at"></i>
+                            : bioetsans@orange.fr
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+<script>
+function initMap() {
+  var uluru = {lat: 49.494302, lng: 1.143258};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: uluru
+  });
+  var marker = new google.maps.Marker({
+    position: uluru,
+    map: map
+  });
+}
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzHEMw1pkmu5e1NhW7x4uAdS17fWF4QSc&callback=initMap"
+type="text/javascript"></script>
+{% endblock %}

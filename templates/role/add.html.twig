@@ -1,0 +1,25 @@
+{% extends "superadmin/base.html.twig" %}
+
+{% block title %}SendEasy - {{ 'admin.superadmin_panel'|trans }}{% endblock %}
+
+{% block ariane_content %}
+  {{ parent() }}
+  <li class="breadcrumb-item"><a href="{{ path('role') }}">{{ 'roles'|trans }}</a></li>
+  <li class="breadcrumb-item active" aria-current="page">{{ 'roles.add'|trans }}</li>
+{% endblock %}
+
+{% block body %}
+  <form action="{{ path('add_role') }}" method="POST">
+    <fieldset class="col-md-8 offset-md-2">
+      <legend>{{ 'roles.add'|trans }}</legend>
+      <div class="form-group">
+        <label for="name">{{ 'name'|trans }}</label>
+        <input type="text" id="name" name="form[name]" value="{{ role.name }}" class="form-control"/>
+      </div>
+      {{ form_widget(form._token) }}
+      <button type="submit" class="btn btn-primary">
+        <i class="fa fa-plus" aria-hidden="true"></i> {{ 'add'|trans }}
+      </button>
+    </fieldset>
+  </form>
+{% endblock %}

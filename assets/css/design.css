@@ -1,0 +1,17 @@
+.row {
+  margin-right: 0;
+  margin-left : 0;
+}
+
+table.table table.table {
+  width        : calc(100% + 1.5rem) !important;
+  max-width    : none !important;
+  margin-top   : -.75rem;
+  margin-bottom: -.75rem;
+  margin-left  : -.75rem;
+}
+
+.variable {
+  font-style: italic;
+  color     : cadetblue;
+}

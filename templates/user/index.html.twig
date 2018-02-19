@@ -1,0 +1,52 @@
+{% extends "superadmin/base.html.twig" %}
+
+{% block title %}SendEasy - {{ 'admin.superadmin_panel'|trans }}{% endblock %}
+
+{% block ariane_content %}
+  {{ parent() }}
+  <li class="breadcrumb-item active" aria-current="page">{{ 'users'|trans }}</li>
+{% endblock %}
+
+{% block body %}
+  <a href="{{ path('add_user') }}">
+    <button type="button" class="btn btn-success float-right mr-3">
+      {{ 'users.add'|trans }}
+    </button>
+  </a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>{{ 'username'|trans }}</th>
+        <th>{{ 'firstname'|trans }}</th>
+        <th>{{ 'lastname'|trans }}</th>
+        <th>{{ 'email'|trans }}</th>
+        <th>{{ 'role'|trans }}</th>
+        <th>{{ 'entity'|trans }}</th>
+        <th>{{ 'actions'|trans }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.firstname }}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.roles|join(', ') }}</td>
+          <td>{% if user.entity is not null %}{{ user.entity.name }}{% endif %}</td>
+          <td>
+            <a href="{{ path('edit_user', {'user': user.id})}}" class="btn btn-sm btn-warning"><i class="fa fa-pencil-alt"></i></a>
+            {% if user.entity is not null %}
+              <a href="{{ path('set_user_services_marketlines', {'user': user.id}) }}" class="btn btn-sm btn-primary" title="{{'users.add.services_marketlines'|trans}}"><i class="fa fa-code-branch"></i></a>
+            {% endif %}
+            <!-- <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></a> -->
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
